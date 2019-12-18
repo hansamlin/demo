@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import Wrapper from "./homePage/Wrapper";
-// import { fromEvent } from "rxjs";
-// import { filter } from "rxjs/operators";
+import Wrapper from "./components/HomePage/Wrapper";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -17,28 +15,18 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  border: 10px solid #393f93;
+  border: 10px solid;
+  border-color: ${props => props.theme.border};
 `;
 
-// React.useEffect(() => {
-//   const hoverSubscribe = fromEvent(
-//     document.querySelectorAll(".panels"),
-//     "mouseenter"
-//   )
-//     .pipe(
-//       filter(e => e)
-//     )
-//     .subscribe(color => console.log(color));
-
-//   return () => hoverSubscribe.unsubscribe();
-// }, []);
-
 function App() {
+  const [theme, setTheme] = useState({ body: "#12144e", border: "#3d439b" });
+
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Wrapper />
+      <Container theme={theme}>
+        <Wrapper setTheme={setTheme} />
       </Container>
     </>
   );
