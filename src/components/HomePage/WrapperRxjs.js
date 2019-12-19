@@ -1,23 +1,28 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Panels from "./Panels";
+import { fromEvent } from "rxjs";
+import {
+  map,
+  concatAll,
+  pairwise,
+  distinctUntilChanged,
+  delay
+} from "rxjs/operators";
 import sumeitse from "../sumeitse.jpg";
 import zorn from "../zorn.jpg";
 import video from "../loop_home.mp4";
-import { ThemeContext } from "./theme-context";
 
-const divBackGround = ({ background }) =>
-  background.type === "img" && background.item;
-
-const Wrapper = styled.div`
+const Background = styled.div`
   width: 100%;
   height: 100%;
   display: block;
-  background-image: ${divBackGround};
-
-  opacity: 1;
-  transition: opacity 1s ease-in 0.35s;
-  z-index: 10;
+  background-image: ${({ background }) =>
+    background.type === "img" && background.item};
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
 
   &:before {
     background: linear-gradient(
@@ -40,14 +45,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const zIndexTheme = ({ theme }) =>
-  theme.background.type === "video" ? "1" : "-1";
-
 const DivVideo = styled.div`
   position: fixed;
   width: calc(100% - 20px);
   height: calc(100vh - 20px);
-  z-index: ${zIndexTheme};
+  z-index: ${({ theme }) => (theme.background.type === "video" ? "1" : "-1")};
 `;
 
 const Video = styled.video`
@@ -62,21 +64,24 @@ const panels = [
     background: {
       type: "img",
       item: `url("${zorn}")`
-    }
+    },
+    class: ""
   },
   {
     color: "#3d439b",
     background: {
       type: "video",
-      item: video
-    }
+      item: `${video}`
+    },
+    class: ""
   },
   {
     color: "#00aeef",
     background: {
       type: "img",
       item: `url("${sumeitse}")`
-    }
+    },
+    class: ""
   }
 ];
 
@@ -85,11 +90,40 @@ const Space = styled.div`
   width: calc((100% - ((100% / 3.6) * 3)) / 2);
 `;
 
-export default () => {
-  const { theme } = useContext(ThemeContext);
+export default function Wrapper({ theme, setTheme }) {
+  useEffect(() => {
+    const enter$ = fromEvent(
+      document.querySelectorAll(".panels"),
+      "mouseenter"
+    );
+
+    const move$ = fromEvent(document.querySelectorAll(".panels"), "mousemove");
+
+    const source$ = enter$.pipe(
+      map(() => move$),
+      concatAll(),
+      map(event => event.target.getAttribute("color")),
+      distinctUntilChanged(),
+      pairwise(),
+      map(([prev, curr]) => {
+        const newTheme = panels.find(obj => obj.color === curr);
+        const prevTheme = panels.find(obj => obj.color === prev);
+        setTheme({ ...prevTheme, class: "active fade" });
+        return { prev, newTheme };
+      }),
+      delay(400)
+    );
+
+    const subscribe$ = source$.subscribe(({ prev, newTheme }) => {
+      return setTheme({ ...newTheme, class: "active" });
+    });
+
+    return () => subscribe$.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <Wrapper background={theme.background}>
+    <Background background={theme.background}>
       <DivVideo theme={theme}>
         <Video autoPlay loop muted preload="auto">
           <source src={theme.background.item} type="video/mp4" />
@@ -105,6 +139,6 @@ export default () => {
           </React.Fragment>
         );
       })}
-    </Wrapper>
+    </Background>
   );
-};
+}
