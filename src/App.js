@@ -16,17 +16,26 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   border: 10px solid;
-  border-color: ${props => props.theme.border};
+  border-color: ${({ theme }) => theme.color};
 `;
 
+const initTheme = {
+  color: "#3d439b",
+  background: {
+    type: "video",
+    item:
+      "https://www.gardnermuseum.org/sites/default/files/videos/home/170710-hydrangea-loop_home_0.mp4"
+  }
+};
+
 function App() {
-  const [theme, setTheme] = useState({ body: "#12144e", border: "#3d439b" });
+  const [theme, setTheme] = useState(initTheme);
 
   return (
     <>
       <GlobalStyle />
       <Container theme={theme}>
-        <Wrapper setTheme={setTheme} />
+        <Wrapper theme={theme} setTheme={setTheme} />
       </Container>
     </>
   );
