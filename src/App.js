@@ -25,7 +25,8 @@ const initTheme = {
     type: "video",
     item:
       "https://www.gardnermuseum.org/sites/default/files/videos/home/170710-hydrangea-loop_home_0.mp4"
-  }
+  },
+  class: "active"
 };
 
 function App() {

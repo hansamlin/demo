@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Panels from "./Panels";
 import { fromEvent } from "rxjs";
-import { map } from "rxjs/operators";
+import {
+  map,
+  concatAll,
+  pairwise,
+  distinctUntilChanged,
+  delay
+} from "rxjs/operators";
 import sumeitse from "../sumeitse.jpg";
 import zorn from "../zorn.jpg";
 import video from "../loop_home.mp4";
@@ -58,38 +64,61 @@ const panels = [
     background: {
       type: "img",
       item: `url("${zorn}")`
-    }
+    },
+    class: ""
   },
   {
     color: "#3d439b",
     background: {
       type: "video",
       item: `${video}`
-    }
+    },
+    class: ""
   },
   {
     color: "#00aeef",
     background: {
       type: "img",
       item: `url("${sumeitse}")`
-    }
+    },
+    class: ""
   }
 ];
 
+const Space = styled.div`
+  display: inline-block;
+  width: calc((100% - ((100% / 3.6) * 3)) / 2);
+`;
+
 export default function Wrapper({ theme, setTheme }) {
-  React.useEffect(() => {
-    const mouseenter$ = fromEvent(
+  useEffect(() => {
+    const enter$ = fromEvent(
       document.querySelectorAll(".panels"),
       "mouseenter"
-    )
-      .pipe(
-        map(e =>
-          panels.find(obj => obj.color === e.target.getAttribute("color"))
-        )
-      )
-      .subscribe(theme => setTheme(theme));
+    );
 
-    return () => mouseenter$.unsubscribe();
+    const move$ = fromEvent(document.querySelectorAll(".panels"), "mousemove");
+
+    const source$ = enter$.pipe(
+      map(() => move$),
+      concatAll(),
+      map(event => event.target.getAttribute("color")),
+      distinctUntilChanged(),
+      pairwise(),
+      map(([prev, curr]) => {
+        const newTheme = panels.find(obj => obj.color === curr);
+        const prevTheme = panels.find(obj => obj.color === prev);
+        setTheme({ ...prevTheme, class: "active fade" });
+        return { prev, newTheme };
+      }),
+      delay(400)
+    );
+
+    const subscribe$ = source$.subscribe(({ prev, newTheme }) => {
+      return setTheme({ ...newTheme, class: "active" });
+    });
+
+    return () => subscribe$.unsubscribe();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -100,11 +129,14 @@ export default function Wrapper({ theme, setTheme }) {
           <source src={theme.background.item} type="video/mp4" />
         </Video>
       </DivVideo>
-      {panels.map(item => {
+      {panels.map((item, index) => {
         return (
-          <Panels theme={theme} key={item.color}>
-            {item}
-          </Panels>
+          <React.Fragment key={index}>
+            {index !== 0 && <Space key={index} />}
+            <Panels theme={theme} key={item.color}>
+              {item}
+            </Panels>
+          </React.Fragment>
         );
       })}
     </Background>
