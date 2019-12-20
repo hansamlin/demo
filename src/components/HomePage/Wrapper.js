@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import Panels from "./Panels";
-import sumeitse from "../sumeitse.jpg";
-import zorn from "../zorn.jpg";
-import video from "../loop_home.mp4";
 import { ThemeContext } from "./theme-context";
 
 const divBackGround = ({ background }) =>
@@ -13,11 +10,26 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   display: block;
-  background-image: ${divBackGround};
-
-  opacity: 1;
-  transition: opacity 1s ease-in 0.35s;
+  object-fit: cover;
   z-index: 10;
+  background-image: ${divBackGround};
+  background-size: cover;
+  transition: opacity 500ms ease-in-out;
+
+  &.active:after {
+    opacity: 0;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: black;
+    left: 10px;
+    width: calc(100vw - 20px);
+    height: calc(100vh - 20px);
+    transition: opacity 500ms ease-in-out;
+    opacity: 1;
+  }
 
   &:before {
     background: linear-gradient(
@@ -54,44 +66,51 @@ const Video = styled.video`
   height: 100%;
   width: 100%;
   object-fit: cover;
-`;
+  transition: opacity 500ms ease-in-out;
+  opacity: 0;
 
-const panels = [
-  {
-    color: "#e5439a",
-    background: {
-      type: "img",
-      item: `url("${zorn}")`
-    }
-  },
-  {
-    color: "#3d439b",
-    background: {
-      type: "video",
-      item: video
-    }
-  },
-  {
-    color: "#00aeef",
-    background: {
-      type: "img",
-      item: `url("${sumeitse}")`
-    }
+  &.active {
+    transition: opacity 500ms ease-in-out;
+    opacity: 1;
   }
-];
+`;
 
 const Space = styled.div`
   display: inline-block;
   width: calc((100% - ((100% / 3.6) * 3)) / 2);
 `;
 
-export default () => {
-  const { theme } = useContext(ThemeContext);
+const width = "(100vw - 20px)";
+const divWidth = `(${width} / 3.6)`;
+
+const Slider = styled.div`
+  z-index: 3;
+  background: ${({ color }) => color};
+  position: fixed;
+  width: calc(${divWidth});
+  height: calc(100vh - 20px);
+  top: 10px;
+  transition: transform 300ms ease-in-out;
+  transform: ${({ left }) => left};
+  opacity: 0.4;
+`;
+
+export default ({ panels }) => {
+  const { theme, position } = useContext(ThemeContext);
 
   return (
-    <Wrapper background={theme.background}>
+    <Wrapper
+      background={theme.background}
+      className={theme.background.type === "img" && theme.class}
+    >
       <DivVideo theme={theme}>
-        <Video autoPlay loop muted preload="auto">
+        <Video
+          className={theme.color === "#3d439b" && theme.class}
+          autoPlay
+          loop
+          muted
+          preload="auto"
+        >
           <source src={theme.background.item} type="video/mp4" />
         </Video>
       </DivVideo>
@@ -105,6 +124,7 @@ export default () => {
           </React.Fragment>
         );
       })}
+      <Slider left={position} color={theme.fixColor} />
     </Wrapper>
   );
 };
