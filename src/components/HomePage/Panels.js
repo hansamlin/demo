@@ -15,22 +15,30 @@ export default ({ children }) => {
 
   const mouseEnter = React.useCallback(() => {
     if (theme.color !== children.color) {
-      setAction(prevAction => ({
-        ...prevAction,
-        class: "",
-        init: false,
-        slider: children.slider,
-        fixNewColor: children.color
-      }));
+      /**
+       * prevAction
+       * init
+       * slider
+       * fixNewColor
+       */
       setTimeout(() => {
         setAction(prevAction => ({
           ...prevAction,
-          class: "active",
-          theme: children,
+          class: "",
           init: false,
+          slider: children.slider,
           fixNewColor: children.color
         }));
-      }, 400);
+        setTimeout(() => {
+          setAction(prevAction => ({
+            ...prevAction,
+            class: "active",
+            theme: children,
+            init: false,
+            fixNewColor: children.color
+          }));
+        }, 400);
+      }, 100);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);

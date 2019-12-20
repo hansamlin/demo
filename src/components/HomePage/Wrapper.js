@@ -124,6 +124,7 @@ export default ({ panels }) => {
           </React.Fragment>
         );
       })}
+      {console.log(theme.fixColor)}
       <Slider left={position} color={theme.fixColor} />
     </Wrapper>
   );

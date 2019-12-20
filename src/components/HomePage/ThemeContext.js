@@ -22,7 +22,8 @@ const initTheme = {
     item: video
   },
   class: "active",
-  fixColor: "#3d439b"
+  fixColor: "#3d439b",
+  slider: "center"
 };
 
 const panels = [
@@ -83,21 +84,23 @@ export default () => {
         setTheme(prevTheme => ({
           ...prevTheme,
           class: action.class,
-          fixColor: action.fixNewColor
+          fixColor: action.fixNewColor,
+          slider: action.slider
         }));
       }
     }
   }, [action]);
 
-  // return React.useMemo(() => {
-  return (
-    <ThemeContext.Provider
-      value={{ theme, setAction, position: position[action.slider] }}
-    >
-      <Container theme={theme}>
-        <Wrapper panels={panels} />
-      </Container>
-    </ThemeContext.Provider>
-  );
-  // }, [theme]);
+  return React.useMemo(() => {
+    return (
+      <ThemeContext.Provider
+        value={{ theme, setAction, position: position[action.slider] }}
+      >
+        <Container theme={theme}>
+          <Wrapper panels={panels} />
+        </Container>
+      </ThemeContext.Provider>
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme]);
 };
