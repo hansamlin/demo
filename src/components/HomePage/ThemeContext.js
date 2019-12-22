@@ -10,9 +10,29 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   border: 10px solid;
-  border-color: ${({ theme }) => theme.fixColor};
+  border-color: ${({ theme }) => theme.color};
   background: black;
   transition: border-color 400ms ease-in-out;
+
+  &:before {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35) 0%,
+      transparent 100%
+    );
+    content: "";
+    display: block;
+    height: 330px;
+    margin-top: 10px;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    touch-action: none;
+    transition: opacity 0.35s ease-out;
+    width: calc(100% - 20px);
+    z-index: 50;
+  }
 `;
 
 const initTheme = {
@@ -21,8 +41,6 @@ const initTheme = {
     type: "video",
     item: video
   },
-  class: "active",
-  fixColor: "#3d439b",
   slider: "center"
 };
 
@@ -71,36 +89,37 @@ export default () => {
     slider: "center"
   });
 
-  useEffect(() => {
-    if (action.init === false) {
-      if (action.class) {
-        const newTheme = action.theme;
-        setTheme({
-          ...newTheme,
-          class: action.class,
-          fixColor: action.fixNewColor
-        });
-      } else {
-        setTheme(prevTheme => ({
-          ...prevTheme,
-          class: action.class,
-          fixColor: action.fixNewColor,
-          slider: action.slider
-        }));
-      }
-    }
-  }, [action]);
-
+  console.log(theme);
+  // useEffect(() => {
+  //   if (action.init === false) {
+  //     if (action.class) {
+  //       const newTheme = action.theme;
+  //       setTheme({
+  //         ...newTheme,
+  //         class: action.class,
+  //         fixColor: action.fixNewColor
+  //       });
+  //     } else {
+  //       setTheme(prevTheme => ({
+  //         ...prevTheme,
+  //         class: action.class,
+  //         fixColor: action.fixNewColor,
+  //         slider: action.slider
+  //       }));
+  //     }
+  //   }
+  // }, [action]);
   return React.useMemo(() => {
+    // console.log(theme);
     return (
       <ThemeContext.Provider
-        value={{ theme, setAction, position: position[action.slider] }}
+        value={{ theme, setTheme, position: position[action.slider] }}
       >
         <Container theme={theme}>
           <Wrapper panels={panels} />
         </Container>
       </ThemeContext.Provider>
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 };
