@@ -44,7 +44,7 @@ export default () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const memoContainer = React.useMemo(() => {
+  return React.useMemo(() => {
     return (
       <Container className="App">
         {theme.map((item, index) => (
@@ -62,6 +62,4 @@ export default () => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTheme]);
-
-  return memoContainer;
 };
