@@ -29,7 +29,9 @@ const Container = styled.div`
 `;
 
 export default () => {
-  const { currentTheme, setTheme } = useContext(ThemeContext);
+  const { currentTheme, setTheme, visible, setVisible } = useContext(
+    ThemeContext
+  );
 
   const blockStatic = React.useMemo(() => {
     return theme.map((item, index) => (
@@ -55,11 +57,12 @@ export default () => {
           position={position[currentTheme.slider]}
           static={true}
           animation={true}
-          opacity={0.4}
+          opacity={visible}
           theme={currentTheme}
+          onTransitionEnd={() => setVisible(0.6)}
         />
       </Container>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentTheme]);
+  }, [currentTheme, visible]);
 };

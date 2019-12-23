@@ -44,7 +44,7 @@ const PanelsWrapper = ({ item, current }) => {
         position={position[current.slider]}
         static={false}
         animation={false}
-        opacity={item.color === current.color ? 0.6 : 0}
+        opacity={item.color === current.color ? 1 : 0}
         theme={current}
       />
     </Panels>
