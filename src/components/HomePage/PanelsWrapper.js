@@ -37,25 +37,16 @@ const Panels = styled.div`
 `;
 
 const PanelsWrapper = ({ item, current }) => {
-  const inner = React.useMemo(() => {
-    return (
-      <>
-        <Background theme={item} />
-        <Block
-          position={position[current.slider]}
-          static={false}
-          animation={false}
-          opacity={item.color === current.color ? 0.6 : 0}
-          theme={current}
-        />
-      </>
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current]);
-
   return (
     <Panels color={item.color} current={current}>
-      {inner}
+      <Background theme={item} />
+      <Block
+        position={position[current.slider]}
+        static={false}
+        animation={false}
+        opacity={item.color === current.color ? 0.6 : 0}
+        theme={current}
+      />
     </Panels>
   );
 };
