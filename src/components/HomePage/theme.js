@@ -33,7 +33,7 @@ const vWidth = "(100vw - 20px)";
 const blockWidth = `(${vWidth} / 3.6)`;
 const space = `(${vWidth} - (${blockWidth} * 3))`;
 const center = `translate(calc(${blockWidth} + (${space} / 2)), 0)`;
-const right = `translate(calc((${blockWidth} * 2) + (${space} / 2) * 2), 0)`;
+const right = `translate(calc(${vWidth} - ${blockWidth}), 0)`;
 
 export const position = {
   left: "translate(0, 0)",
