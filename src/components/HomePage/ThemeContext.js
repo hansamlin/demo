@@ -89,7 +89,6 @@ export default () => {
     slider: "center"
   });
 
-  console.log(theme);
   // useEffect(() => {
   //   if (action.init === false) {
   //     if (action.class) {
