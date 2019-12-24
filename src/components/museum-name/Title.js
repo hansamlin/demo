@@ -18,7 +18,7 @@ const En = styled.div`
   font-size: 1vw;
 `;
 
-export default ({ zh, en, slider }) => {
+export default ({ zh, en }) => {
   return (
     <Title>
       <Zh>{zh}</Zh>

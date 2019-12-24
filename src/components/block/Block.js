@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { vHeight, vWidth } from "./theme";
+import { vHeight, vWidth } from "../container/theme";
 
 const Block = styled.div`
   position: absolute;

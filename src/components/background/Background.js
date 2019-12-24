@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import Block from "./Block";
-import { vHeight, vWidth  } from "./theme";
+import { vHeight, vWidth  } from "../container/theme";
 
 const Image = styled.div`
   background-image: ${props => props.theme.background.item};
@@ -41,14 +41,6 @@ const PanelsWrapper = ({ item, current }) => {
   return (
     <Panels panelsColor={item.color} current={current}>
       <Background theme={item} />
-      {/* <Block
-        position={position[item.slider]}
-        top="0"
-        left="0"
-        animation={false}
-        visible={item.color === current.color ? 1 : 0}
-        theme={item}
-      /> */}
     </Panels>
   );
 };

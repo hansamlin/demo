@@ -1,11 +1,12 @@
-import React, { useState, useContext } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import React, { useContext } from "react";
+import styled from "styled-components";
 import { ThemeContext } from "./theme-context";
-import Block from "./Block";
+import Toolbar from "../toolbar/Toolbar";
+import Block from "../block/Block";
 import { theme, position, vHeight, vWidth } from "./theme";
-import PanelsWrapper from "./PanelsWrapper";
-import Title from "./Title";
-import BlockContent from "./BlockContent";
+import Background from "../background/Background";
+import Title from "../museum-name/Title";
+import BlockContent from "../block/BlockContent";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -173,6 +174,7 @@ export default () => {
     // };
     return (
       <Container className="App">
+        <Toolbar />
         <TitleContainer>
           <Logo theme={currentTheme} />
           {theme.map((item, index) => (
@@ -185,7 +187,7 @@ export default () => {
           ))}
         </TitleContainer>
         {theme.map((item, index) => (
-          <PanelsWrapper item={item} current={currentTheme} key={index} />
+          <Background item={item} current={currentTheme} key={index} />
         ))}
         {BlockStatic}
         <Block
