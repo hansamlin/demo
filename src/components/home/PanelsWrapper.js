@@ -28,9 +28,10 @@ const Background = ({ theme }) => {
 };
 
 const Panels = styled.div`
-  opacity: ${({ current, color }) => (current.color === color ? 1 : 0)};
+  opacity: ${({ current, panelsColor }) =>
+    current.color === panelsColor ? 1 : 0};
   transition: all 1000ms ease-in-out;
-  border: 10px solid ${({ color }) => color};
+  border: 10px solid ${({ panelsColor }) => panelsColor};
   height: calc(100vh - 20px);
   width: calc(100vw - 20px);
   position: fixed;
@@ -38,7 +39,7 @@ const Panels = styled.div`
 
 const PanelsWrapper = ({ item, current }) => {
   return (
-    <Panels color={item.color} current={current}>
+    <Panels panelsColor={item.color} current={current}>
       <Background theme={item} />
       <Block
         position={position[current.slider]}
