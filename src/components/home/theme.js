@@ -9,7 +9,11 @@ export const theme = [
       type: "img",
       item: `url("${zorn}")`
     },
-    slider: "left"
+    slider: "left",
+    title: "MEET ISABELLA & HER MUSEUM",
+    description: "Learn about the daring visionary and the Museum she created.",
+    link: [{ title: "Learn about the theft", href: "#" }],
+    button: "STORIES AND MORE"
   },
   {
     color: "#3d439b",
@@ -17,7 +21,14 @@ export const theme = [
       type: "video",
       item: video
     },
-    slider: "center"
+    slider: "center",
+    title: "Come & Visit",
+    description: "Currently closed",
+    link: [
+      { title: "All hours", href: "#" },
+      { title: "Directions & Parking", href: "#" }
+    ],
+    button: "Plan your visit"
   },
   {
     color: "#00aeef",
@@ -25,7 +36,12 @@ export const theme = [
       type: "img",
       item: `url("${sumeitse}")`
     },
-    slider: "right"
+    slider: "right",
+    title: "In the Company of Artists",
+    description:
+      "Celebrate the living legacy of artists at the Museum with Sophie Calle, Bharti Kher, Luisa Lambri, Laura Owens, Rachel Perry, Dayanita Singh, and Su-Mei Tse.",
+    link: [],
+    button: "EXPLORE TODAY"
   }
 ];
 

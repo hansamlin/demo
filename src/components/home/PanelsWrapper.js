@@ -38,7 +38,6 @@ const Panels = styled.div`
 `;
 
 const PanelsWrapper = ({ item, current }) => {
-  console.log(item);
   return (
     <Panels panelsColor={item.color} current={current}>
       <Background theme={item} />
@@ -49,9 +48,7 @@ const PanelsWrapper = ({ item, current }) => {
         animation={false}
         visible={item.color === current.color ? 1 : 0}
         theme={item}
-      >
-        <div>{item.title}</div>
-      </Block>
+      />
     </Panels>
   );
 };

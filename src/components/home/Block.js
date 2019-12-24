@@ -9,7 +9,7 @@ const Block = styled.div`
   transition: ${({ animation }) => animation && "all 400ms ease-in-out"};
   transform: ${({ position }) => position};
   background-color: ${props => props.theme.color};
-
+  z-index: ${props => props.zindex && props.zindex};
   opacity: ${props => props.visible};
   mix-blend-mode: hard-light;
 `;
