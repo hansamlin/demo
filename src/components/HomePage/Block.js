@@ -10,7 +10,7 @@ const Block = styled.div`
   transform: ${({ position }) => position};
   background-color: ${props => props.theme.color};
 
-  opacity: ${props => props.opacity};
+  opacity: ${props => props.visible};
   mix-blend-mode: hard-light;
 `;
 

@@ -59,7 +59,7 @@ export default () => {
         onMouseEnter={() => setTheme(item)}
         top="10px"
         left="10px"
-        opacity={0}
+        visible={0}
       />
     ));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,7 +77,7 @@ export default () => {
           left="10px"
           top="10px"
           animation={true}
-          opacity={visible}
+          visible={visible}
           theme={currentTheme}
           onTransitionEnd={() => setVisible(0.6)}
         />

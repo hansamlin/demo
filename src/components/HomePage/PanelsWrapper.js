@@ -45,7 +45,7 @@ const PanelsWrapper = ({ item, current }) => {
         top="0"
         left="0"
         animation={false}
-        opacity={item.color === current.color ? 1 : 0}
+        visible={item.color === current.color ? 1 : 0}
         theme={current}
       />
     </Panels>
