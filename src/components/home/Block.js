@@ -1,17 +1,18 @@
 import styled from "styled-components";
+import { vHeight, vWidth } from "./theme";
 
 const Block = styled.div`
   position: absolute;
-  width: calc((100vw - 20px) / 3.6);
-  height: calc(100vh - 20px);
-  top: ${props => props.top};
-  left: ${props => props.left};
+  width: calc(${vWidth} / 4);
+  height: calc(((${vHeight} / 9) * 8) - 1px);
+  bottom: 0;
+  left: 0;
   transition: ${({ animation }) => animation && "all 400ms ease-in-out"};
   transform: ${({ position }) => position};
   background-color: ${props => props.theme.color};
   z-index: ${props => props.zindex && props.zindex};
   opacity: ${props => props.visible};
-  mix-blend-mode: hard-light;
+  border-radius: 50% 50% 0 0;
 `;
 
 export default Block;

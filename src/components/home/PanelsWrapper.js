@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import Block from "./Block";
-import { position } from "./theme";
+// import Block from "./Block";
+import { vHeight, vWidth  } from "./theme";
 
 const Image = styled.div`
   background-image: ${props => props.theme.background.item};
   background-size: cover;
-  height: calc(100vh - 20px);
-  width: calc(100vw - 20px);
+  height: ${vHeight};
+  width: ${vWidth};
 `;
 
 const Video = styled.video`
   position: fixed;
-  height: calc(100vh - 20px);
-  width: calc(100vw - 20px);
+  height: ${vHeight};
+  width: ${vWidth};
   object-fit: cover;
 `;
 
@@ -31,9 +31,9 @@ const Panels = styled.div`
   opacity: ${({ current, panelsColor }) =>
     current.color === panelsColor ? 1 : 0};
   transition: all 1000ms ease-in-out;
-  border: 10px solid ${({ panelsColor }) => panelsColor};
-  height: calc(100vh - 20px);
-  width: calc(100vw - 20px);
+  // border: 10px solid ${({ panelsColor }) => panelsColor};
+  height: 100vh
+  width: 100vw
   position: fixed;
 `;
 
@@ -41,14 +41,14 @@ const PanelsWrapper = ({ item, current }) => {
   return (
     <Panels panelsColor={item.color} current={current}>
       <Background theme={item} />
-      <Block
+      {/* <Block
         position={position[item.slider]}
         top="0"
         left="0"
         animation={false}
         visible={item.color === current.color ? 1 : 0}
         theme={item}
-      />
+      /> */}
     </Panels>
   );
 };

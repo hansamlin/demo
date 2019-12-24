@@ -1,58 +1,62 @@
 import sumeitse from "../sumeitse.jpg";
 import zorn from "../zorn.jpg";
-import video from "../loop_home.mp4";
+// import video from "../loop_home.mp4";
 
 export const theme = [
   {
-    color: "#e5439a",
+    color: "rgba(229, 22, 128, 0.88)",
     background: {
       type: "img",
       item: `url("${zorn}")`
     },
-    slider: "left",
-    title: "MEET ISABELLA & HER MUSEUM",
-    description: "Learn about the daring visionary and the Museum she created.",
-    link: [{ title: "Learn about the theft", href: "#" }],
-    button: "STORIES AND MORE"
+    slider: 1,
+    block: { title: "桃園市立美術館", enTitle: "TAOYUAN MUSEUM OF FINE ARTS" }
   },
   {
-    color: "#3d439b",
-    background: {
-      type: "video",
-      item: video
-    },
-    slider: "center",
-    title: "Come & Visit",
-    description: "Currently closed",
-    link: [
-      { title: "All hours", href: "#" },
-      { title: "Directions & Parking", href: "#" }
-    ],
-    button: "Plan your visit"
-  },
-  {
-    color: "#00aeef",
+    color: "rgba(235, 108, 1, 0.88)",
     background: {
       type: "img",
       item: `url("${sumeitse}")`
     },
-    slider: "right",
-    title: "In the Company of Artists",
-    description:
-      "Celebrate the living legacy of artists at the Museum with Sophie Calle, Bharti Kher, Luisa Lambri, Laura Owens, Rachel Perry, Dayanita Singh, and Su-Mei Tse.",
-    link: [],
-    button: "EXPLORE TODAY"
+    slider: 2,
+    block: {
+      title: "桃園市兒童美術館",
+      enTitle: "TAOYUAN CHILDREN'S ART CENTER"
+    }
+  },
+  {
+    color: "rgba(214, 11, 41, 0.88)",
+    background: {
+      type: "img",
+      item: `url("${zorn}")`
+    },
+    slider: 3,
+    block: {
+      title: "橫山書法藝術館",
+      enTitle: "HENGSHEN CALLIGRAPHY ART CENTER"
+    }
+  },
+  {
+    color: "rgba(149, 1, 125, 0.88)",
+    background: {
+      type: "img",
+      item: `url("${sumeitse}")`
+    },
+    slider: 4,
+    block: { title: "中路美術館", enTitle: "CHUNGLU ART CENTER" }
   }
 ];
 
-const vWidth = "(100vw - 20px)";
-const blockWidth = `(${vWidth} / 3.6)`;
-const space = `(${vWidth} - (${blockWidth} * 3))`;
-const center = `translate(calc(${blockWidth} + (${space} / 2)), 0)`;
-const right = `translate(calc(${vWidth} - ${blockWidth}), 0)`;
+export const vHeight = "100vh";
+export const vWidth = "100vw";
+const blockWidth = `(${vWidth} / 4)`;
+const two = `translate(calc(${blockWidth} * 1), 0)`;
+const three = `translate(calc(${blockWidth} * 2), 0)`;
+const four = `translate(calc(${vWidth} - ${blockWidth}), 0)`;
 
 export const position = {
-  left: "translate(0, 0)",
-  center: center,
-  right: right
+  1: "translate(0, 0)",
+  2: two,
+  3: three,
+  4: four
 };

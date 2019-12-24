@@ -1,24 +1,22 @@
 import React from "react";
 import Container from "./Container";
-import video from "../loop_home.mp4";
+import zorn from "../zorn.jpg";
 import { ThemeContext } from "./theme-context";
 
 const initTheme = {
-  color: "#3d439b",
+  color: "rgba(229, 22, 128, 0.88)",
   background: {
-    type: "video",
-    item: video
+    type: "img",
+    item: `url(${zorn})`
   },
-  slider: "center"
+  slider: 1
 };
 
 export default () => {
   const [currentTheme, setTheme] = React.useState(initTheme);
 
   return (
-    <ThemeContext.Provider
-      value={{ currentTheme, setTheme }}
-    >
+    <ThemeContext.Provider value={{ currentTheme, setTheme }}>
       <Container />
     </ThemeContext.Provider>
   );
