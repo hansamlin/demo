@@ -42,7 +42,8 @@ const PanelsWrapper = ({ item, current }) => {
       <Background theme={item} />
       <Block
         position={position[current.slider]}
-        static={false}
+        top="0"
+        left="0"
         animation={false}
         opacity={item.color === current.color ? 1 : 0}
         theme={current}
