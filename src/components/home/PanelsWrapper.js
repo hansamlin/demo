@@ -38,17 +38,20 @@ const Panels = styled.div`
 `;
 
 const PanelsWrapper = ({ item, current }) => {
+  console.log(item);
   return (
     <Panels panelsColor={item.color} current={current}>
       <Background theme={item} />
       <Block
-        position={position[current.slider]}
+        position={position[item.slider]}
         top="0"
         left="0"
         animation={false}
         visible={item.color === current.color ? 1 : 0}
-        theme={current}
-      />
+        theme={item}
+      >
+        <div>{item.title}</div>
+      </Block>
     </Panels>
   );
 };
