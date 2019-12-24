@@ -21,7 +21,7 @@ const Container = styled.div`
     left: 10px;
     opacity: 1;
     pointer-events: none;
-    position: absolute;
+    position: fixed;
     touch-action: none;
     width: calc(100% - 20px);
     z-index: 1;
