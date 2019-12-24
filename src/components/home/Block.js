@@ -12,7 +12,7 @@ const Block = styled.div`
   background-color: ${props => props.theme.color};
   z-index: ${props => props.zindex && props.zindex};
   opacity: ${props => props.visible};
-  border-radius: 50% 50% 0 0;
+  // border-radius: 50% 50% 0 0;
 `;
 
 export default Block;

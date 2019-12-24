@@ -8,6 +8,7 @@ const Title = styled.div`
   color: white;
   position: relative;
   top: calc(44%);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.26);
 `;
 
 const Zh = styled.div`

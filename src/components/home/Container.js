@@ -5,7 +5,7 @@ import Block from "./Block";
 import { theme, position, vHeight, vWidth } from "./theme";
 import PanelsWrapper from "./PanelsWrapper";
 import Title from "./Title";
-// import BlockContent from "./BlockContent";
+import BlockContent from "./BlockContent";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -37,6 +37,15 @@ const TitleContainer = styled.div`
   z-index: 1;
   width: 100vw;
   height: 52vh;
+`;
+
+const Logo = styled.div`
+  width: 15vw;
+  height: 5.5vh;
+  position: absolute;
+  background-color: ${props => props.theme.color};
+  top: 2.2vh;
+  left: 5vw;
 `;
 
 const Round = styled.div`
@@ -137,20 +146,20 @@ export default () => {
           visible={1}
           zindex={5}
         >
-          {/* <BlockContent
+          <BlockContent
             note={item}
             key={index}
-            blockTitle={
-              currentTheme.color !== item.color
-                ? reset.blockTitle
-                : blockState.blockTitle
-            }
-            blockHide={
-              currentTheme.color !== item.color
-                ? reset.blockHide
-                : blockState.blockHide
-            }
-          /> */}
+            // blockTitle={
+            //   currentTheme.color !== item.color
+            //     ? reset.blockTitle
+            //     : blockState.blockTitle
+            // }
+            // blockHide={
+            //   currentTheme.color !== item.color
+            //     ? reset.blockHide
+            //     : blockState.blockHide
+            // }
+          />
         </Block>
       );
     });
@@ -165,6 +174,7 @@ export default () => {
     return (
       <Container className="App">
         <TitleContainer>
+          <Logo theme={currentTheme} />
           {theme.map((item, index) => (
             <Title
               key={index}

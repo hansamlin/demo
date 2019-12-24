@@ -25,7 +25,7 @@ export const theme = [
     }
   },
   {
-    color: "rgba(214, 11, 41, 0.88)",
+    color: "rgba(149, 1, 125, 0.88)",
     background: {
       type: "img",
       item: `url("${zorn}")`
@@ -37,7 +37,7 @@ export const theme = [
     }
   },
   {
-    color: "rgba(149, 1, 125, 0.88)",
+    color: "rgba(214, 11, 41, 0.88)",
     background: {
       type: "img",
       item: `url("${sumeitse}")`
