@@ -29,9 +29,27 @@ const Container = styled.div`
 `;
 
 export default () => {
-  const { currentTheme, setTheme, visible, setVisible } = useContext(
-    ThemeContext
-  );
+  const { currentTheme, setTheme } = useContext(ThemeContext);
+
+  const [visible, setVisible] = React.useState(0.4);
+
+  const useVisibleEffect = (SetVisible, currentTheme) => {
+    const didMountRef = React.useRef(false);
+    React.useEffect(() => {
+      if (didMountRef.current) {
+        SetVisible();
+      } else {
+        didMountRef.current = true;
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentTheme]);
+  };
+
+  const SetVisible = () => {
+    setVisible(1);
+  };
+
+  useVisibleEffect(SetVisible, currentTheme);
 
   const blockStatic = React.useMemo(() => {
     return theme.map((item, index) => (
@@ -39,7 +57,8 @@ export default () => {
         key={index}
         position={position[item.slider]}
         onMouseEnter={() => setTheme(item)}
-        static={true}
+        top="10px"
+        left="10px"
         opacity={0}
       />
     ));
@@ -55,7 +74,8 @@ export default () => {
         {blockStatic}
         <Block
           position={position[currentTheme.slider]}
-          static={true}
+          left="10px"
+          top="10px"
           animation={true}
           opacity={visible}
           theme={currentTheme}
