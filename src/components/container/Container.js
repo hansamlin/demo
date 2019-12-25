@@ -1,6 +1,6 @@
-import React, { useContext, useState, useReducer } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { ThemeContext } from "./context";
+import { ThemeContext, ToolbarContext } from "./context";
 import Toolbar from "../toolbar/Toolbar";
 import Block from "../block/Block";
 import { theme, position, vHeight, vWidth } from "./theme";
@@ -8,6 +8,8 @@ import Background from "../background/Background";
 import Title from "../museum-name/Title";
 import ContainerBottom from "./ContainerBottom";
 import BlockContext from "./BlockContext";
+import LogoWhite from "../logo_1.png";
+import LogoBlack from "../logo.png";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -43,17 +45,18 @@ const TitleContainer = styled.div`
   top: 0;
   right: 0;
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   height: 52vh;
 `;
 
 const Logo = styled.div`
   width: 15vw;
   height: 5.5vh;
-  position: absolute;
+  position: fixed;
   background-color: ${props => props.theme.color};
   top: 2.2vh;
   left: 5vw;
+  z-index: 20;
 `;
 
 const Round = styled.div`
@@ -75,68 +78,46 @@ const Rectangle = styled.div`
   bottom: 0;
 `;
 
-const blockReducer = (blockState, action) => {
-  switch (action.type) {
-    case "show":
-      return { ...blockState, opacity: 1 };
-    case "reset":
-      return { ...blockState, opacity: 0 };
-    default:
-      throw new Error();
-  }
-};
-
-const initReducer = {
-  opacity: 1
-};
-
 export default () => {
-  const { currentTheme, setTheme } = useContext(ThemeContext);
+  const { currentTheme, setTheme, show } = useContext(ThemeContext);
 
-  const [blockState, dispatch] = useReducer(blockReducer, initReducer);
-
-  // const useVisibleEffect = (visible, currentTheme) => {
-  //   const didMountRef = React.useRef(false);
-  //   React.useEffect(() => {
-  //     if (didMountRef.current) {
-  //       visible();
-  //     } else {
-  //       didMountRef.current = true;
-  //     }
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, [currentTheme]);
-  // };
-
-  // useVisibleEffect(() => {
-  //   dispatch({ type: "show" });
-  // }, currentTheme);
+  const BlockStaticStyle = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  `;
 
   const BlockStatic = React.useMemo(() => {
-    return theme.map((item, index) => {
-      return (
-        <Block
-          key={index}
-          position={position[item.slider]}
-          onMouseEnter={() => setTheme(item)}
-          visible={1}
-          zindex={5}
-        />
-      );
-    });
+    return (
+      <BlockStaticStyle className="mousehover">
+        {theme.map((item, index) => {
+          return (
+            <Block
+              key={index}
+              position="relative"
+              onMouseEnter={() => setTheme(item)}
+              visible={1}
+              zindex={5}
+            />
+          );
+        })}
+      </BlockStaticStyle>
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return React.useMemo(() => {
-    const handleTransitionEnd = () => {
-      console.log("lll");
-      dispatch({ type: "show" });
-    };
-
+    console.log(show.close);
     return (
       <Container className="App">
+        <Logo>
+          <img src={show.close === "open" ? LogoBlack : LogoWhite} alt="Logo" />
+        </Logo>
+
         <Toolbar />
-        <TitleContainer>
-          <Logo theme={currentTheme} />
+
+        <TitleContainer className="TitleContainer">
           {theme.map((item, index) => (
             <Title
               key={index}
@@ -163,10 +144,10 @@ export default () => {
 
         {/* 滑動區塊 */}
         <Block
-          position={position[currentTheme.slider]}
+          position="absolute"
           animation={true}
           visible={1}
-          onTransitionEnd={handleTransitionEnd}
+          theme={{ bottom: 0, transform: position[currentTheme.slider] }}
         >
           <Round theme={currentTheme} />
           <Rectangle theme={currentTheme} />
@@ -174,5 +155,5 @@ export default () => {
       </Container>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentTheme]);
+  }, [currentTheme, show]);
 };

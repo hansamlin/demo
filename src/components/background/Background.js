@@ -21,7 +21,7 @@ const Panels = styled.div`
     current.color === panelsColor ? 1 : 0};
   transition: all 1000ms ease-in-out;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: absolute;
   background: black;
   left: 0;
@@ -32,7 +32,7 @@ const Panels = styled.div`
 const PanelsWrapper = ({ item, current }) => {
   return (
     <>
-      <Panels panelsColor={item.color} current={current}>
+      <Panels panelsColor={item.color} current={current} className="background">
         <Background theme={item} />
       </Panels>
     </>

@@ -117,11 +117,10 @@ export const theme = [
 ];
 
 export const vHeight = "100vh";
-export const vWidth = "100vw";
-const blockWidth = `(${vWidth} / 4)`;
-const two = `translate(calc(${blockWidth} * 1), 0)`;
-const three = `translate(calc(${blockWidth} * 2), 0)`;
-const four = `translate(calc(${vWidth} - ${blockWidth}), 0)`;
+export const vWidth = "100%";
+const two = `translate(calc(${vWidth} * 1), 0)`;
+const three = `translate(calc(${vWidth} * 2), 0)`;
+const four = `translate(calc(${vWidth} * 3), 0)`;
 
 export const position = {
   1: "translate(0, 0)",

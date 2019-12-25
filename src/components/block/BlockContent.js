@@ -2,32 +2,6 @@ import React from "react";
 import { BlockContext } from "../container/context";
 import styled from "styled-components";
 import { FaYoutube, FaFacebookF, FaInstagram } from "react-icons/fa";
-import { position } from "../container/theme";
-
-// const Icon = styled.div`
-//   font-size: 30px;
-//   transform: ${props => props.theme.scale};
-//   transition: ${props => props.theme.transition};
-//   letter-spacing: 2px;
-//   text-align: center;
-// `;
-
-// const Hide = styled.div`
-//   height: ${props => props.theme.height};
-//   opacity: ${props => props.theme.opacity};
-//   transform: ${props => props.theme.transform};
-//   transition: height 0.01s linear,
-//     opacity 0.45s cubic-bezier(0.26, 0.88, 0.57, 0.9) 0.35s,
-//     transform 0.45s cubic-bezier(0.26, 0.88, 0.57, 0.9) 0.35s;
-// `;
-
-// const Link = ({ item }) => {
-//   return (
-//     <div>
-//       <a href={item.href}>{item.title}</a>
-//     </div>
-//   );
-// };
 
 const Flex = styled.div`
   display: flex;
@@ -270,28 +244,32 @@ const Soon = () => {
 };
 
 const BlockContent = () => {
-  const { current, color, slider } = React.useContext(BlockContext);
+  const { current, color } = React.useContext(BlockContext);
 
   const Style = styled.div`
     color: white;
-    position: absolute;
-    width: calc(100vw / 4);
-    top: 32.77vh;
+    position: relative;
+    width: calc(100% / 4);
     opacity: ${props => props.theme};
-    transition: ${props => (props.theme === "1" ? "opacity 1s ease-out" : "")};
-    transform: ${props => props.position};
+    // transition: ${props => (props.theme === "1" ? "opacity 1s ease-out" : "")};
+    display: inline-block;
     z-index: 2;
+    height: 100%;
+    vertical-align: bottom;
   `;
 
-  return React.useMemo(() => (
-    <Style theme={current === color ? "1" : "0"} position={position[slider]}>
-      <Icon />
-      <Today />
-      <Ing />
-      <Soon />
-    </Style>
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  ), [current]);
+  return React.useMemo(
+    () => (
+      <Style theme={current === color ? "1" : "0"}>
+        <Icon />
+        <Today />
+        <Ing />
+        <Soon />
+      </Style>
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [current]
+  );
 };
 
 export default BlockContent;

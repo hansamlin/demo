@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Title = styled.div`
-  width: calc(100vw / 4);
+  width: calc(100% / 4);
   display: inline-block;
   text-align: center;
   color: white;

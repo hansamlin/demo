@@ -14,7 +14,7 @@ const Toolbar = styled.div`
 
 export default () => {
   return (
-    <Toolbar>
+    <Toolbar className="Toolbar">
       <Nav />
       <Search />
       <Hamburger />

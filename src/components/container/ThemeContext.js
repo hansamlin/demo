@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "./Container";
 import zorn from "../zorn.jpg";
 import { ThemeContext } from "./context";
@@ -14,10 +14,14 @@ const initTheme = {
 };
 
 export default () => {
-  const [currentTheme, setTheme] = React.useState(initTheme);
+  const [currentTheme, setTheme] = useState(initTheme);
+  const [show, setShow] = useState({
+    search: { scale: 1, opacity: 1, cursor: "pointer" },
+    close: "close"
+  });
 
   return (
-    <ThemeContext.Provider value={{ currentTheme, setTheme }}>
+    <ThemeContext.Provider value={{ currentTheme, setTheme, show, setShow }}>
       <div>
         <Container />
         <Info />

@@ -4,7 +4,7 @@ import { ThemeContext } from "./context";
 
 const Style = styled.div`
   height: 606px;
-  width: 100vw;
+  width: 100%;
   background-color: ${props => props.theme.color};
   position: absolute;
   left: 0;
