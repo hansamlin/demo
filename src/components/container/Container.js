@@ -7,7 +7,7 @@ import { theme, position, vHeight, vWidth } from "./theme";
 import Background from "../background/Background";
 import Title from "../museum-name/Title";
 import ContainerBottom from "./ContainerBottom";
-import BlockContext from "./BlockContext";
+import BlockContent from "../block/BlockContent";
 import LogoWhite from "../logo_1.png";
 import LogoBlack from "../logo.png";
 import SearchPup from "../toolbar/SearchPup";
@@ -138,7 +138,7 @@ export default () => {
         {BlockStatic}
 
         {/* BlockContent */}
-        <BlockContext />
+        <BlockContent />
 
         {/* 輔色 */}
         <ContainerBottom />

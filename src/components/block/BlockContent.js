@@ -1,7 +1,8 @@
 import React from "react";
-import { BlockContext } from "../container/context";
+import { ThemeContext } from "../container/context";
 import styled from "styled-components";
 import { FaYoutube, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { theme } from "../container/theme";
 
 const Flex = styled.div`
   display: flex;
@@ -9,8 +10,7 @@ const Flex = styled.div`
   text-align: center;
 `;
 
-const Button = () => {
-  const { color } = React.useContext(BlockContext);
+const Button = ({ color }) => {
   const Style = styled.button`
     border: 1px solid #ffffff;
     background: transparent;
@@ -90,9 +90,7 @@ const Icon = () => {
   );
 };
 
-const Today = () => {
-  const { today, slider } = React.useContext(BlockContext);
-
+const Today = ({ today, slider }) => {
   const Style = styled(Flex)`
     border-top: 1px rgba(255, 255, 255, 1) dashed;
     border-bottom: 1px rgba(255, 255, 255, 1) dashed;
@@ -167,9 +165,7 @@ const Today = () => {
   );
 };
 
-const Ing = () => {
-  const { ing } = React.useContext(BlockContext);
-
+const Ing = ({ ing, color }) => {
   const Style = styled(Flex)`
     height: 17.96vh;
     width: 90%;
@@ -194,16 +190,14 @@ const Ing = () => {
           {ing.time.to.year} <SpanLarge>{ing.time.to.date}</SpanLarge>
         </P>
       </div>
-      <Button />
+      <Button color={color} />
     </Style>
   ) : (
     ""
   );
 };
 
-const Soon = () => {
-  const { soon } = React.useContext(BlockContext);
-
+const Soon = ({ soon, color }) => {
   const Style = styled(Flex)`
     height: 17.96vh;
     width: 90%;
@@ -236,39 +230,63 @@ const Soon = () => {
           )}
         </P>
       </div>
-      <Button />
+      <Button color={color} />
     </Style>
   ) : (
     ""
   );
 };
 
-const BlockContent = () => {
-  const { current, color } = React.useContext(BlockContext);
-
-  const Style = styled.div`
-    color: white;
-    position: relative;
-    width: calc(100% / 4);
-    opacity: ${props => props.theme};
-    display: inline-block;
-    z-index: ${props => (props.theme === "1" ? 6 : 2)};
-    height: 100%;
-    vertical-align: bottom;
-  `;
-
+const News = ({ item }) => {
   return React.useMemo(
     () => (
-      <Style theme={current === color ? "1" : "0"}>
+      <>
         <Icon />
-        <Today />
-        <Ing />
-        <Soon />
-      </Style>
+        <Today today={item.block.today} slider={item.slider} />
+        <Ing ing={item.block.ing} color={item.color} />
+        <Soon soon={item.block.soon} color={item.color} />
+      </>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [current]
+    []
   );
 };
 
-export default BlockContent;
+const StyleAbsolute = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 32.77vh;
+  height: 67.23vh;
+`;
+
+const Style = styled.div`
+  color: white;
+  position: relative;
+  width: calc(100% / 4);
+  opacity: ${props => props.theme};
+  display: inline-block;
+  z-index: ${props => (props.theme === "1" ? 6 : 2)};
+  height: 100%;
+  vertical-align: bottom;
+`;
+
+const BlockContent = ({ currentTheme }) => {
+  return (
+    <StyleAbsolute>
+      {theme.map((item, index) => (
+        <Style
+          theme={currentTheme.color === item.color ? "1" : "0"}
+          key={index}
+        >
+          <News item={item} />
+        </Style>
+      ))}
+    </StyleAbsolute>
+  );
+};
+
+export default () => {
+  const { currentTheme } = React.useContext(ThemeContext);
+
+  return <BlockContent currentTheme={currentTheme} />;
+};
