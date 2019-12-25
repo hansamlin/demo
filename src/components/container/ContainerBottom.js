@@ -8,7 +8,7 @@ const SubBackground = styled.div`
   background-color: ${props => props.theme.color};
   display: inline-block;
   bottom: 0;
-  position: fixed;
+  position: absolute;
   transform: ${props => props.position};
 `;
 

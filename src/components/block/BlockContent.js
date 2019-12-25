@@ -44,8 +44,6 @@ const Button = () => {
     height: 35px;
     border-radius: 20px;
     color: rgba(255, 255, 255, 1);
-    // position: relative;
-    // left: calc(100% / 2 - 60px);
     font-size: 14px;
 
     &:hover {
@@ -276,7 +274,7 @@ const BlockContent = () => {
 
   const Style = styled.div`
     color: white;
-    position: fixed;
+    position: absolute;
     width: calc(100vw / 4);
     top: 32.77vh;
     opacity: ${props => props.theme};

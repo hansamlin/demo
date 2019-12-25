@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { vHeight, vWidth } from "../container/theme";
 
 const Block = styled.div`
-  position: fixed;
+  position: absolute;
   width: calc(${vWidth} / 4);
   height: calc(((${vHeight} / 9) * 8) - 1px);
   bottom: 0;

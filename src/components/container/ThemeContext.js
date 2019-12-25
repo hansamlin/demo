@@ -2,6 +2,7 @@ import React from "react";
 import Container from "./Container";
 import zorn from "../zorn.jpg";
 import { ThemeContext } from "./context";
+import Info from "./Info";
 
 const initTheme = {
   color: "rgba(229, 22, 128, 0.88)",
@@ -17,7 +18,10 @@ export default () => {
 
   return (
     <ThemeContext.Provider value={{ currentTheme, setTheme }}>
-      <Container />
+      <div>
+        <Container />
+        <Info />
+      </div>
     </ThemeContext.Provider>
   );
 };

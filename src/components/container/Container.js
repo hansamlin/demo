@@ -12,6 +12,10 @@ import BlockContext from "./BlockContext";
 const Container = styled.div`
   height: ${vHeight};
   width: ${vWidth};
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
 
   &:before {
     background: linear-gradient(
@@ -23,9 +27,10 @@ const Container = styled.div`
     height: 30vh;
     top: 0;
     left: 0;
+    right: 0;
     opacity: 1;
     pointer-events: none;
-    position: fixed;
+    position: absolute;
     touch-action: none;
     width: ${vWidth};
     z-index: 1;
@@ -33,9 +38,10 @@ const Container = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
+  right: 0;
   z-index: 1;
   width: 100vw;
   height: 52vh;

@@ -7,33 +7,26 @@ const Image = styled.div`
   background-size: cover;
   height: ${vHeight};
   width: ${vWidth};
-`;
-
-const Video = styled.video`
-  position: fixed;
-  height: ${vHeight};
-  width: ${vWidth};
-  object-fit: cover;
+  left: 0;
+  right: 0;
+  top: 0;
 `;
 
 const Background = ({ theme }) => {
-  return theme.background.type === "img" ? (
-    <Image theme={theme} />
-  ) : (
-    <Video>
-      <source src={theme.background.item} type="video/mp4" />
-    </Video>
-  );
+  return <Image theme={theme} />;
 };
 
 const Panels = styled.div`
   opacity: ${({ current, panelsColor }) =>
     current.color === panelsColor ? 1 : 0};
   transition: all 1000ms ease-in-out;
-  height: 100vh
-  width: 100vw
-  position: fixed;
-  // background: black;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background: black;
+  left: 0;
+  right: 0;
+  top: 0;
 `;
 
 const PanelsWrapper = ({ item, current }) => {
