@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "./Container";
 import zorn from "../zorn.jpg";
-import { ThemeContext } from "./theme-context";
+import { ThemeContext } from "./context";
 
 const initTheme = {
   color: "rgba(229, 22, 128, 0.88)",

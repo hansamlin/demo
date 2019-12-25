@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-// import Block from "./Block";
-import { vHeight, vWidth  } from "../container/theme";
+import { vHeight, vWidth } from "../container/theme";
 
 const Image = styled.div`
   background-image: ${props => props.theme.background.item};
@@ -31,17 +30,19 @@ const Panels = styled.div`
   opacity: ${({ current, panelsColor }) =>
     current.color === panelsColor ? 1 : 0};
   transition: all 1000ms ease-in-out;
-  // border: 10px solid ${({ panelsColor }) => panelsColor};
   height: 100vh
   width: 100vw
   position: fixed;
+  // background: black;
 `;
 
 const PanelsWrapper = ({ item, current }) => {
   return (
-    <Panels panelsColor={item.color} current={current}>
-      <Background theme={item} />
-    </Panels>
+    <>
+      <Panels panelsColor={item.color} current={current}>
+        <Background theme={item} />
+      </Panels>
+    </>
   );
 };
 

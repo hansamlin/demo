@@ -7,12 +7,12 @@ const Search = styled.div`
   border-radius: 50% 50%;
   display: inline-block;
   position: relative;
-  width: 3vw;
-  height: 3vw;
+  width: 64px;
+  height: 64px;
   vertical-align: middle;
   text-align: center;
-  line-height: 3vw;
-  margin: 0 19.5px 0 20.5px;
+  line-height: 64px;
+  margin: 0 39px 0 41px;
 `;
 
 const Span = styled.span`

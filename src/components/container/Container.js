@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useReducer } from "react";
 import styled from "styled-components";
-import { ThemeContext } from "./theme-context";
+import { ThemeContext } from "./context";
 import Toolbar from "../toolbar/Toolbar";
 import Block from "../block/Block";
 import { theme, position, vHeight, vWidth } from "./theme";
 import Background from "../background/Background";
 import Title from "../museum-name/Title";
-import BlockContent from "../block/BlockContent";
+import ContainerBottom from "./ContainerBottom";
+import BlockContext from "./BlockContext";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -68,58 +69,36 @@ const Rectangle = styled.div`
   bottom: 0;
 `;
 
-// const reset = {
-//   blockTitle: {
-//     scale: "scale(0.6)"
-//   },
-//   blockHide: {
-//     height: 0,
-//     opacity: 0,
-//     transform: "translate3d(0, -70px, 0)"
-//   }
-// };
+const reset = {
+  blockTitle: {
+    scale: "scale(0.6)"
+  },
+  blockHide: {
+    height: 0,
+    opacity: 0,
+    transform: "translate3d(0, -70px, 0)"
+  }
+};
 
-// const blockReducer = (blockState, action) => {
-//   switch (action.type) {
-//     case "show":
-//       return {
-//         ...blockState,
-//         blockTitle: {
-//           scale: "scale(1)",
-//           transition:
-//             "transform 0.25s cubic-bezier(0.26,0.88,0.57,0.9) 0.5s,color 0.25s cubic-bezier(0.26,0.88,0.57,0.9);"
-//         },
-//         blockHide: {
-//           height: "auto",
-//           opacity: 1,
-//           transform: "translate3d(0, 0, 0)"
-//         }
-//       };
-//     case "reset":
-//       return reset;
-//     default:
-//       throw new Error();
-//   }
-// };
+const blockReducer = (blockState, action) => {
+  switch (action.type) {
+    case "show":
+      return { ...blockState, opacity: 1 };
+    case "reset":
+      return { ...blockState, opacity: 0 };
+    default:
+      throw new Error();
+  }
+};
 
-// const initReducer = {
-//   blockTitle: {
-//     scale: "scale(1)",
-//     transition:
-//       "transform 0.75s cubic-bezier(0.26,0.88,0.57,0.9) 0.5s,color 0.25s cubic-bezier(0.26,0.88,0.57,0.9);"
-//   },
-//   blockHide: {
-//     height: "auto",
-//     opacity: 1,
-//     transform: "translate3d(0, 0, 0)"
-//   }
-// };
+const initReducer = {
+  opacity: 1
+};
 
 export default () => {
   const { currentTheme, setTheme } = useContext(ThemeContext);
 
-  // const [visible, setVisible] = useState(0.4);
-  // const [blockState, dispatch] = useReducer(blockReducer, initReducer);
+  const [blockState, dispatch] = useReducer(blockReducer, initReducer);
 
   // const useVisibleEffect = (visible, currentTheme) => {
   //   const didMountRef = React.useRef(false);
@@ -134,7 +113,7 @@ export default () => {
   // };
 
   // useVisibleEffect(() => {
-  //   setVisible(1);
+  //   dispatch({ type: "show" });
   // }, currentTheme);
 
   const BlockStatic = React.useMemo(() => {
@@ -146,32 +125,18 @@ export default () => {
           onMouseEnter={() => setTheme(item)}
           visible={1}
           zindex={5}
-        >
-          <BlockContent
-            note={item}
-            key={index}
-            // blockTitle={
-            //   currentTheme.color !== item.color
-            //     ? reset.blockTitle
-            //     : blockState.blockTitle
-            // }
-            // blockHide={
-            //   currentTheme.color !== item.color
-            //     ? reset.blockHide
-            //     : blockState.blockHide
-            // }
-          />
-        </Block>
+        />
       );
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return React.useMemo(() => {
-    // const handleTransitionEnd = () => {
-    //   setVisible(0.6);
-    //   // dispatch({ type: "show" });
-    // };
+    const handleTransitionEnd = () => {
+      console.log("lll");
+      dispatch({ type: "show" });
+    };
+
     return (
       <Container className="App">
         <Toolbar />
@@ -186,15 +151,27 @@ export default () => {
             />
           ))}
         </TitleContainer>
+
+        {/* 背景 */}
         {theme.map((item, index) => (
           <Background item={item} current={currentTheme} key={index} />
         ))}
+
+        {/* mousehover */}
         {BlockStatic}
+
+        {/* BlockContent */}
+        <BlockContext />
+
+        {/* 輔色 */}
+        <ContainerBottom />
+
+        {/* 滑動區塊 */}
         <Block
           position={position[currentTheme.slider]}
           animation={true}
           visible={1}
-          // onTransitionEnd={handleTransitionEnd}
+          onTransitionEnd={handleTransitionEnd}
         >
           <Round theme={currentTheme} />
           <Rectangle theme={currentTheme} />

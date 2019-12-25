@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ThemeContext } from "../container/theme-context";
+import { ThemeContext } from "../container/context";
 
 const Style = styled.div`
   display: inline-block;
