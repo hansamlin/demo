@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { ThemeContext, ToolbarContext } from "./context";
+import { ThemeContext } from "./context";
 import Toolbar from "../toolbar/Toolbar";
 import Block from "../block/Block";
 import { theme, position, vHeight, vWidth } from "./theme";
@@ -10,6 +10,7 @@ import ContainerBottom from "./ContainerBottom";
 import BlockContext from "./BlockContext";
 import LogoWhite from "../logo_1.png";
 import LogoBlack from "../logo.png";
+import SearchPup from "../toolbar/SearchPup";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -116,6 +117,7 @@ export default () => {
         </Logo>
 
         <Toolbar />
+        <SearchPup />
 
         <TitleContainer className="TitleContainer">
           {theme.map((item, index) => (

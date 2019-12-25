@@ -17,15 +17,15 @@ export default () => {
   const [currentTheme, setTheme] = useState(initTheme);
   const [show, setShow] = useState({
     search: { scale: 1, opacity: 1, cursor: "pointer" },
-    close: "close"
+    close: { opacity: 0, zIndex: 9 }
+    // search: { scale: 70, opacity: 0, cursor: "unset" },
+    // close: { opacity: 1, zIndex: 16 }
   });
 
   return (
     <ThemeContext.Provider value={{ currentTheme, setTheme, show, setShow }}>
-      <div>
-        <Container />
-        <Info />
-      </div>
+      <Container />
+      <Info />
     </ThemeContext.Provider>
   );
 };

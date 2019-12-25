@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
-import { IoMdClose } from "react-icons/io";
+
 import { ThemeContext } from "../container/context";
 
 const Search = styled.div`
@@ -37,54 +37,17 @@ export default () => {
     if (show.search.scale === 1) {
       setShow({
         search: { scale: 70, opacity: 0, cursor: "unset" },
-        close: "open"
+        close: { opacity: 1, zIndex: 16 }
       });
     }
   };
 
-  const handleClose = () => {
-    setShow({
-      search: { scale: 1, opacity: 1, cursor: "pointer" },
-      close: "close"
-    });
-  };
-
-  const Close = ({ theme }) => {
-    const Style = styled.div`
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      color: #000;
-      cursor: pointer;
-      font-size: 70px;
-      opacity: 0;
-      transition: all 0.3s ease-in-out;
-
-      &.open {
-        transform: rotate(-90deg);
-        z-index: 16;
-        opacity: 1;
-      }
-    `;
-
-    return (
-      <Style
-        theme={theme}
-        onClick={handleClose}
-        className={show.close === "open" ? "open" : ""}
-      >
-        <IoMdClose />
-      </Style>
-    );
-  };
-
   return (
     <>
-      <Search theme={show} onClick={handleShow}></Search>
+      <Search theme={show} onClick={handleShow} />
       <Span theme={show} onClick={handleShow}>
         <FaSearch />
       </Span>
-      <Close theme={show} />
     </>
   );
 };
