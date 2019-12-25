@@ -251,9 +251,8 @@ const BlockContent = () => {
     position: relative;
     width: calc(100% / 4);
     opacity: ${props => props.theme};
-    // transition: ${props => (props.theme === "1" ? "opacity 1s ease-out" : "")};
     display: inline-block;
-    z-index: 2;
+    z-index: ${props => (props.theme === "1" ? 6 : 2)};
     height: 100%;
     vertical-align: bottom;
   `;

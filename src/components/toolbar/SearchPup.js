@@ -25,7 +25,7 @@ export default () => {
   const handleClose = () => {
     setShow({
       search: { scale: 1, opacity: 1, cursor: "pointer" },
-      close: { opacity: 0, zIndex: 9 }
+      close: { opacity: 0, zIndex: 0 }
     });
   };
 
@@ -38,7 +38,6 @@ export default () => {
       cursor: pointer;
       font-size: 70px;
       opacity: ${props => props.theme.close.opacity};
-      z-index: ${props => props.theme.close.zIndex};
     `;
 
     return (
@@ -52,7 +51,6 @@ export default () => {
     <SearchPup theme={show}>
       <SearchSelect />
       <SearchKeyWord />
-
       <Close theme={show} />
     </SearchPup>
   );

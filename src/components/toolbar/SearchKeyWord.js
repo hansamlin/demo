@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Style = styled.div`
-  width: 40%;
+  width: 50%;
 `;
 
 const Span = styled.span`

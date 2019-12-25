@@ -98,7 +98,7 @@ export default () => {
               key={index}
               position="relative"
               onMouseEnter={() => setTheme(item)}
-              visible={1}
+              visible={0}
               zindex={5}
             />
           );
@@ -109,7 +109,6 @@ export default () => {
   }, []);
 
   return React.useMemo(() => {
-    console.log(show.close);
     return (
       <Container className="App">
         <Logo>
@@ -150,6 +149,7 @@ export default () => {
           animation={true}
           visible={1}
           theme={{ bottom: 0, transform: position[currentTheme.slider] }}
+          className="floatBlock"
         >
           <Round theme={currentTheme} />
           <Rectangle theme={currentTheme} />
