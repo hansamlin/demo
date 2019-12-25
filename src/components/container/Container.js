@@ -69,17 +69,6 @@ const Rectangle = styled.div`
   bottom: 0;
 `;
 
-const reset = {
-  blockTitle: {
-    scale: "scale(0.6)"
-  },
-  blockHide: {
-    height: 0,
-    opacity: 0,
-    transform: "translate3d(0, -70px, 0)"
-  }
-};
-
 const blockReducer = (blockState, action) => {
   switch (action.type) {
     case "show":

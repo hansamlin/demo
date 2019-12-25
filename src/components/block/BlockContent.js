@@ -276,7 +276,7 @@ const BlockContent = () => {
 
   const Style = styled.div`
     color: white;
-    position: absolute;
+    position: fixed;
     width: calc(100vw / 4);
     top: 32.77vh;
     opacity: ${props => props.theme};

@@ -24,11 +24,9 @@ const Span = styled.span`
 export default () => {
   return (
     <Search>
-      {/* <Aaa> */}
       <Span>
         <FaSearch />
       </Span>
-      {/* </Aaa> */}
     </Search>
   );
 };
