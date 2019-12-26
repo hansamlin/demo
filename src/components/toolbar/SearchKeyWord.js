@@ -1,28 +1,79 @@
 import React from "react";
 import styled from "styled-components";
+import { FaSearch } from "react-icons/fa";
 
 const Style = styled.div`
   width: 50%;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out 0.1s;
+
+  &.open {
+    opacity: 1;
+  }
+`;
+
+const Input = styled.input`
+  border: 1px solid #000000;
+  border-radius: 3rem;
+  width: 27rem;
+  height: 4rem;
+  display: block;
+  margin-left: calc(50% - 20rem);
+  line-height: 4rem;
+  font-size: 2.5rem;
+  position: absolute;
+  top: calc(50% - 4rem);
+  padding-left: 3rem;
 `;
 
 const Span = styled.span`
-  border: 1px;
-  border-radius: 20px;
-  width: 10rem;
+  top: calc(50% - 3.4rem);
+  position: absolute;
+  font-size: 2.5rem;
+  left: calc(50% + 5rem);
 `;
 
-export default () => {
+const HotKeyWord = styled.span`
+  position: absolute;
+  font-size: 1.5rem;
+  top: calc(50% + 1rem);
+  left: calc(50% - 17rem);
+`;
+
+const Tag = styled.div`
+  width: 27rem;
+  height: 4rem;
+  display: block;
+  margin-left: calc(50% - 17rem);
+  position: absolute;
+  top: calc(50% + 4rem);
+  text-align: left;
+`;
+
+const KeyWrodTag = styled.span`
+  background: #efefef;
+  border-radius: 20px;
+  padding: 10px 1.5rem;
+  display: inline-block;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+`;
+
+export default ({ show }) => {
   return (
-    <>
-      <Style>
-        <Span>您的特質是...</Span>
-        <div>
-          <p>勇於嘗試</p>
-          <p>好奇寶寶</p>
-          <p>初到旅客</p>
-          <p>熱心助人</p>
-        </div>
-      </Style>
-    </>
+    <Style className={show.close.opacity === 1 && "open"}>
+      <Input type="text" placeholder="關鍵字搜尋" />
+      <Span>
+        <FaSearch />
+      </Span>
+      <HotKeyWord>熱門關鍵字搜尋：</HotKeyWord>
+      <Tag>
+        <KeyWrodTag>導覽申請</KeyWrodTag>
+        <KeyWrodTag>精選典藏</KeyWrodTag>
+        <KeyWrodTag>志工招募</KeyWrodTag>
+        <KeyWrodTag>玩筆弄墨一兒童書藝體驗展</KeyWrodTag>
+      </Tag>
+    </Style>
   );
 };

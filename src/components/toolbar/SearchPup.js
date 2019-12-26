@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import SearchSelect from "./SearchSelect";
 import SearchKeyWord from "./SearchKeyWord";
@@ -19,14 +19,23 @@ const SearchPup = styled.div`
   text-align: center;
 `;
 
+const Span = styled.span`
+  font-size: 4rem;
+  width: 100%;
+  position: absolute;
+  top: 10rem;
+`;
+
 export default () => {
   const { show, setShow } = useContext(ThemeContext);
+  const [toggle, setToggle] = useState(false);
 
   const handleClose = () => {
     setShow({
       search: { scale: 1, opacity: 1, cursor: "pointer" },
       close: { opacity: 0, zIndex: 0 }
     });
+    setToggle(false);
   };
 
   const Close = ({ theme }) => {
@@ -49,8 +58,9 @@ export default () => {
 
   return (
     <SearchPup theme={show}>
-      <SearchSelect />
-      <SearchKeyWord />
+      <Span>讓我們推薦您</Span>
+      <SearchSelect toggle={toggle} setToggle={setToggle} show={show} />
+      <SearchKeyWord show={show} />
       <Close theme={show} />
     </SearchPup>
   );

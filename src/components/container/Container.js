@@ -51,8 +51,6 @@ const TitleContainer = styled.div`
 `;
 
 const Logo = styled.div`
-  width: 15vw;
-  height: 5.5vh;
   position: fixed;
   background-color: ${props => props.theme.color};
   top: 2.2vh;
@@ -112,9 +110,12 @@ export default () => {
     return (
       <Container className="App">
         <Logo>
-          <img src={show.close === "open" ? LogoBlack : LogoWhite} alt="Logo" />
+          <img
+            style={{ display: "block" }}
+            src={show.close.opacity === 1 ? LogoBlack : LogoWhite}
+            alt="Logo"
+          />
         </Logo>
-
         <Toolbar />
         <SearchPup />
 

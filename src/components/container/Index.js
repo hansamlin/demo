@@ -19,7 +19,7 @@ const Index = styled.img`
 
 export default () => {
   const { currentTheme } = useContext(ThemeContext);
-  console.log(currentTheme);
+  
   return (
     <Style theme={currentTheme}>
       <Index src={currentTheme.background.index} alt={currentTheme.slider} />

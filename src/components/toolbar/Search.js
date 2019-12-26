@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
-
 import { ThemeContext } from "../container/context";
 
 const Search = styled.div`
@@ -18,7 +17,7 @@ const Search = styled.div`
   cursor: pointer;
   transform: scale(${props => props.theme.search.scale});
   transition: transform 0.6s ease-out;
-  z-index: 15;
+  z-index: 1;
 `;
 
 const Span = styled.span`
@@ -27,7 +26,7 @@ const Span = styled.span`
   cursor: pointer;
   transform: translate(-82px, 20px);
   opacity: ${props => props.theme.search.opacity};
-  z-index: 15;
+  z-index: 1;
 `;
 
 export default () => {
