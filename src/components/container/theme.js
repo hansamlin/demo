@@ -2,6 +2,14 @@ import Arts from "../1.png";
 import ChildrensArt from "../2.png";
 import HengshenArt from "../3.png";
 import ChunglUArt from "../4.png";
+import Index_01 from "../index_01.png";
+import Index_02 from "../index_02.png";
+import Index_03 from "../index_03.png";
+import Index_04 from "../index_04.png";
+import Footer_01 from "../footer_01.png";
+import Footer_02 from "../footer_02.png";
+import Footer_03 from "../footer_03.png";
+import Footer_04 from "../footer_04.png";
 
 export const theme = [
   {
@@ -9,7 +17,9 @@ export const theme = [
     subColor: "#F2408A",
     background: {
       type: "img",
-      item: `url("${Arts}")`
+      item: `url("${Arts}")`,
+      index: Index_01,
+      footer: Footer_01
     },
     slider: 1,
     block: {
@@ -38,7 +48,9 @@ export const theme = [
     subColor: "#EB6C01",
     background: {
       type: "img",
-      item: `url("${ChildrensArt}")`
+      item: `url("${ChildrensArt}")`,
+      index: Index_02,
+      footer: Footer_02
     },
     slider: 2,
     block: {
@@ -70,7 +82,9 @@ export const theme = [
     subColor: "#D60B29",
     background: {
       type: "img",
-      item: `url("${HengshenArt}")`
+      item: `url("${HengshenArt}")`,
+      index: Index_03,
+      footer: Footer_03
     },
     slider: 3,
     block: {
@@ -102,7 +116,9 @@ export const theme = [
     subColor: "#95017D",
     background: {
       type: "img",
-      item: `url("${ChunglUArt}")`
+      item: `url("${ChunglUArt}")`,
+      index: Index_04,
+      footer: Footer_04
     },
     slider: 4,
     block: {
