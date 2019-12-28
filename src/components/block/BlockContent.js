@@ -281,7 +281,7 @@ const Style = styled.div`
   }
 `;
 
-const BlockContent = ({ currentTheme, blockContentShow }) => {
+const BlockContent = ({ currentTheme, blockContentShow, didMount }) => {
   return (
     <StyleAbsolute>
       {theme.map((item, index) => (
@@ -289,7 +289,8 @@ const BlockContent = ({ currentTheme, blockContentShow }) => {
           theme={currentTheme.color === item.color ? "1" : "0"}
           key={index}
           className={
-            blockContentShow === true && currentTheme.color === item.color
+            (blockContentShow === true || didMount.current === false) &&
+            currentTheme.color === item.color
               ? "show"
               : ""
           }
@@ -302,12 +303,15 @@ const BlockContent = ({ currentTheme, blockContentShow }) => {
 };
 
 export default () => {
-  const { currentTheme, blockContentShow } = React.useContext(ThemeContext);
+  const { currentTheme, blockContentShow, didMount } = React.useContext(
+    ThemeContext
+  );
 
   return (
     <BlockContent
       currentTheme={currentTheme}
       blockContentShow={blockContentShow}
+      didMount={didMount}
     />
   );
 };

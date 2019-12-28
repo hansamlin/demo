@@ -30,6 +30,13 @@ export default () => {
 
   const [blockContentShow, setBlockContentShow] = useState(false);
 
+  const didMount = React.useRef(false);
+  React.useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+    }
+  }, [currentTheme]);
+
   return (
     <ThemeContext.Provider
       value={{
@@ -38,7 +45,8 @@ export default () => {
         show,
         setShow,
         blockContentShow,
-        setBlockContentShow
+        setBlockContentShow,
+        didMount
       }}
     >
       <Container />
