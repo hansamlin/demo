@@ -79,7 +79,7 @@ const Rectangle = styled.div`
 `;
 
 export default () => {
-  const { currentTheme, show } = useContext(ThemeContext);
+  const { currentTheme, show, setBlockContentShow } = useContext(ThemeContext);
 
   return React.useMemo(() => {
     return (
@@ -126,6 +126,7 @@ export default () => {
           visible={1}
           theme={{ bottom: 0, transform: position[currentTheme.slider] }}
           className="floatBlock"
+          onTransitionEnd={() => setBlockContentShow(true)}
         >
           <Round theme={currentTheme} />
           <Rectangle theme={currentTheme} />

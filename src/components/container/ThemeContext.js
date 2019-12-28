@@ -28,8 +28,19 @@ export default () => {
     // close: { opacity: 1, zIndex: 16 }
   });
 
+  const [blockContentShow, setBlockContentShow] = useState(false);
+
   return (
-    <ThemeContext.Provider value={{ currentTheme, setTheme, show, setShow }}>
+    <ThemeContext.Provider
+      value={{
+        currentTheme,
+        setTheme,
+        show,
+        setShow,
+        blockContentShow,
+        setBlockContentShow
+      }}
+    >
       <Container />
       <Index />
       <Footer />

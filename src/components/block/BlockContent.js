@@ -263,20 +263,36 @@ const Style = styled.div`
   color: white;
   position: relative;
   width: calc(100% / 4);
-  opacity: ${props => props.theme};
+  // opacity: ${props => props.theme};
+  opacity: 0;
   display: inline-block;
-  z-index: ${props => (props.theme === "1" ? 6 : 2)};
+  // z-index: ${props => (props.theme === "1" ? 6 : 2)};
+  z-index: 2;
   height: 100%;
   vertical-align: bottom;
+  transform: translateY(-5rem);
+  transition: all 0.8s ease-out 0.2s;
+  overflow: scroll;
+
+  &.show {
+    opacity: 1;
+    z-index: 6;
+    transform: translateY(0);
+  }
 `;
 
-const BlockContent = ({ currentTheme }) => {
+const BlockContent = ({ currentTheme, blockContentShow }) => {
   return (
     <StyleAbsolute>
       {theme.map((item, index) => (
         <Style
           theme={currentTheme.color === item.color ? "1" : "0"}
           key={index}
+          className={
+            blockContentShow === true && currentTheme.color === item.color
+              ? "show"
+              : ""
+          }
         >
           <News item={item} />
         </Style>
@@ -286,7 +302,12 @@ const BlockContent = ({ currentTheme }) => {
 };
 
 export default () => {
-  const { currentTheme } = React.useContext(ThemeContext);
+  const { currentTheme, blockContentShow } = React.useContext(ThemeContext);
 
-  return <BlockContent currentTheme={currentTheme} />;
+  return (
+    <BlockContent
+      currentTheme={currentTheme}
+      blockContentShow={blockContentShow}
+    />
+  );
 };
