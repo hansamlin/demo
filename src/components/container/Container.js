@@ -11,6 +11,7 @@ import BlockContent from "../block/BlockContent";
 import LogoWhite from "../logo_1.png";
 import LogoBlack from "../logo.png";
 import SearchPup from "../toolbar/SearchPup";
+import BlockStatic from "../block/BlockStatic";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -78,33 +79,7 @@ const Rectangle = styled.div`
 `;
 
 export default () => {
-  const { currentTheme, setTheme, show } = useContext(ThemeContext);
-
-  const BlockStaticStyle = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  `;
-
-  const BlockStatic = React.useMemo(() => {
-    return (
-      <BlockStaticStyle className="mousehover">
-        {theme.map((item, index) => {
-          return (
-            <Block
-              key={index}
-              position="relative"
-              onMouseEnter={() => setTheme(item)}
-              visible={0}
-              zindex={5}
-            />
-          );
-        })}
-      </BlockStaticStyle>
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { currentTheme, show } = useContext(ThemeContext);
 
   return React.useMemo(() => {
     return (
@@ -136,7 +111,7 @@ export default () => {
         ))}
 
         {/* mousehover */}
-        {BlockStatic}
+        <BlockStatic />
 
         {/* BlockContent */}
         <BlockContent />

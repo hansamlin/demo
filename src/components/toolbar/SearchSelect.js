@@ -75,7 +75,7 @@ const OptionText = styled.p`
 
 export default ({ toggle, setToggle, show }) => {
   let className = toggle === true ? "open" : "close";
-  console.log(show);
+  
   const [redirectFeatured, setRedirectFeatured] = useState(false);
   const [redirectCalendar, setRedirectCalendar] = useState(false);
 
