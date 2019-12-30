@@ -51,7 +51,7 @@ const Tag = styled.div`
   text-align: left;
 `;
 
-const KeyWrodTag = styled.span`
+const KeyWordTag = styled.span`
   background: #efefef;
   border-radius: 20px;
   padding: 10px 1.5rem;
@@ -63,16 +63,16 @@ const KeyWrodTag = styled.span`
 export default ({ show }) => {
   return (
     <Style className={show.close.opacity === 1 && "open"}>
-      <Input type="text" placeholder="關鍵字搜尋" />
+      <Input type="number" placeholder="關鍵字搜尋" />
       <Span>
         <FaSearch />
       </Span>
       <HotKeyWord>熱門關鍵字搜尋：</HotKeyWord>
       <Tag>
-        <KeyWrodTag>導覽申請</KeyWrodTag>
-        <KeyWrodTag>精選典藏</KeyWrodTag>
-        <KeyWrodTag>志工招募</KeyWrodTag>
-        <KeyWrodTag>玩筆弄墨一兒童書藝體驗展</KeyWrodTag>
+        <KeyWordTag>導覽申請</KeyWordTag>
+        <KeyWordTag>精選典藏</KeyWordTag>
+        <KeyWordTag>志工招募</KeyWordTag>
+        <KeyWordTag>玩筆弄墨一兒童書藝體驗展</KeyWordTag>
       </Tag>
     </Style>
   );
