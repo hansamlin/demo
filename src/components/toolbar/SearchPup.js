@@ -59,14 +59,23 @@ const Close = ({ theme, setShow, setToggle }) => {
 export default () => {
   const { show, setShow } = useContext(ThemeContext);
   const [toggle, setToggle] = useState(false);
-  console.log(toggle);
 
-  return (
-    <SearchPup theme={show}>
-      <Span>讓我們推薦您</Span>
-      <SearchSelect toggle={toggle} setToggle={setToggle} show={show} />
-      <SearchKeyWord show={show} />
-      <Close theme={show} setShow={setShow} setToggle={setToggle} />
-    </SearchPup>
+  const handleSelectClose = () => {
+    if (toggle === true) {
+      setToggle(false);
+    }
+  };
+
+  return React.useMemo(
+    () => (
+      <SearchPup theme={show} onClick={handleSelectClose}>
+        <Span>讓我們推薦您</Span>
+        <SearchSelect toggle={toggle} setToggle={setToggle} show={show} />
+        <SearchKeyWord show={show} />
+        <Close theme={show} setShow={setShow} setToggle={setToggle} />
+      </SearchPup>
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [show, toggle]
   );
 };
