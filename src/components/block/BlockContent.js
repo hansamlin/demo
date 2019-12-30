@@ -272,7 +272,27 @@ const Style = styled.div`
   vertical-align: bottom;
   transform: translateY(-5rem);
   transition: all 0.8s ease-out 0.2s;
-  overflow: scroll;
+  overflow: auto;
+
+
+  ::-webkit-scrollbar {
+
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
   &.show {
     opacity: 1;

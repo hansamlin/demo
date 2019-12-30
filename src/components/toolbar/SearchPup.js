@@ -26,10 +26,17 @@ const Span = styled.span`
   top: 10rem;
 `;
 
-export default () => {
-  const { show, setShow } = useContext(ThemeContext);
-  const [toggle, setToggle] = useState(false);
+const Style = styled.div`
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  color: #000;
+  cursor: pointer;
+  font-size: 70px;
+  opacity: ${props => props.theme.close.opacity};
+`;
 
+const Close = ({ theme, setShow, setToggle }) => {
   const handleClose = () => {
     setShow({
       search: { scale: 1, opacity: 1, cursor: "pointer" },
@@ -38,30 +45,28 @@ export default () => {
     setToggle(false);
   };
 
-  const Close = ({ theme }) => {
-    const Style = styled.div`
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      color: #000;
-      cursor: pointer;
-      font-size: 70px;
-      opacity: ${props => props.theme.close.opacity};
-    `;
-
-    return (
+  return React.useMemo(
+    () => (
       <Style theme={theme} onClick={handleClose}>
         <IoMdClose />
       </Style>
-    );
-  };
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [theme]
+  );
+};
+
+export default () => {
+  const { show, setShow } = useContext(ThemeContext);
+  const [toggle, setToggle] = useState(false);
+  console.log(toggle);
 
   return (
     <SearchPup theme={show}>
       <Span>讓我們推薦您</Span>
       <SearchSelect toggle={toggle} setToggle={setToggle} show={show} />
       <SearchKeyWord show={show} />
-      <Close theme={show} />
+      <Close theme={show} setShow={setShow} setToggle={setToggle} />
     </SearchPup>
   );
 };
