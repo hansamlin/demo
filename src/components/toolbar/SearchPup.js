@@ -36,7 +36,9 @@ const Style = styled.div`
   opacity: ${props => props.theme.close.opacity};
 `;
 
-const Close = ({ theme, setShow, setToggle }) => {
+const Close = ({ setToggle }) => {
+  const { show, setShow } = useContext(ThemeContext);
+
   const handleClose = () => {
     setShow({
       search: { scale: 1, opacity: 1, cursor: "pointer" },
@@ -47,17 +49,18 @@ const Close = ({ theme, setShow, setToggle }) => {
 
   return React.useMemo(
     () => (
-      <Style theme={theme} onClick={handleClose}>
+      <Style theme={show} onClick={handleClose}>
+        {console.log("close")}
         <IoMdClose />
       </Style>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [theme]
+    [show]
   );
 };
 
 export default () => {
-  const { show, setShow } = useContext(ThemeContext);
+  const { show } = useContext(ThemeContext);
   const [toggle, setToggle] = useState(false);
 
   const handleSelectClose = () => {
@@ -65,14 +68,14 @@ export default () => {
       setToggle(false);
     }
   };
-
+  
   return React.useMemo(
     () => (
       <SearchPup theme={show} onClick={handleSelectClose}>
         <Span>讓我們推薦您</Span>
         <SearchSelect toggle={toggle} setToggle={setToggle} show={show} />
         <SearchKeyWord show={show} />
-        <Close theme={show} setShow={setShow} setToggle={setToggle} />
+        <Close setToggle={setToggle} />
       </SearchPup>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps

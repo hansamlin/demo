@@ -24,8 +24,6 @@ export default () => {
   const [show, setShow] = useState({
     search: { scale: 1, opacity: 1, cursor: "pointer" },
     close: { opacity: 0, zIndex: 0 }
-    // search: { scale: 70, opacity: 0, cursor: "unset" },
-    // close: { opacity: 1, zIndex: 16 }
   });
 
   const [blockContentShow, setBlockContentShow] = useState(false);
