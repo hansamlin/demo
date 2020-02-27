@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/taoyun-museum/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/taoyun-museum/static/js/main.a22782db.chunk.js",
-    "main.js.map": "/taoyun-museum/static/js/main.a22782db.chunk.js.map",
+    "main.js": "/taoyun-museum/static/js/main.97149c37.chunk.js",
+    "main.js.map": "/taoyun-museum/static/js/main.97149c37.chunk.js.map",
     "runtime-main.js": "/taoyun-museum/static/js/runtime-main.96ee7a87.js",
     "runtime-main.js.map": "/taoyun-museum/static/js/runtime-main.96ee7a87.js.map",
     "static/js/2.c38bccf3.chunk.js": "/taoyun-museum/static/js/2.c38bccf3.chunk.js",
     "static/js/2.c38bccf3.chunk.js.map": "/taoyun-museum/static/js/2.c38bccf3.chunk.js.map",
     "index.html": "/taoyun-museum/index.html",
-    "precache-manifest.80295b81fb0ab3c50efc47acd98be859.js": "/taoyun-museum/precache-manifest.80295b81fb0ab3c50efc47acd98be859.js",
+    "precache-manifest.a865a9022455bd5a2ce689310b99f1b4.js": "/taoyun-museum/precache-manifest.a865a9022455bd5a2ce689310b99f1b4.js",
     "service-worker.js": "/taoyun-museum/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/taoyun-museum/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.c38bccf3.chunk.js.LICENSE": "/taoyun-museum/static/js/2.c38bccf3.chunk.js.LICENSE",
@@ -33,6 +33,6 @@
     "static/js/runtime-main.96ee7a87.js",
     "static/js/2.c38bccf3.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.a22782db.chunk.js"
+    "static/js/main.97149c37.chunk.js"
   ]
 }
