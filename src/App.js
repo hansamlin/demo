@@ -18,7 +18,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Router>
+      <Router basename={process.env.PUBLIC_URL + "/"}>
         <Switch>
           <Route exact path="/">
             <ThemeContextProvider />
