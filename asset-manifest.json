@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/taoyun-museum-demo/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/taoyun-museum-demo/static/js/main.3439e612.chunk.js",
+    "main.js.map": "/taoyun-museum-demo/static/js/main.3439e612.chunk.js.map",
+    "runtime-main.js": "/taoyun-museum-demo/static/js/runtime-main.adb9d453.js",
+    "runtime-main.js.map": "/taoyun-museum-demo/static/js/runtime-main.adb9d453.js.map",
+    "static/js/2.0f77a580.chunk.js": "/taoyun-museum-demo/static/js/2.0f77a580.chunk.js",
+    "static/js/2.0f77a580.chunk.js.map": "/taoyun-museum-demo/static/js/2.0f77a580.chunk.js.map",
+    "index.html": "/taoyun-museum-demo/index.html",
+    "precache-manifest.a957caf9550ad3008b743e8ccfc24e2e.js": "/taoyun-museum-demo/precache-manifest.a957caf9550ad3008b743e8ccfc24e2e.js",
+    "service-worker.js": "/taoyun-museum-demo/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/taoyun-museum-demo/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.0f77a580.chunk.js.LICENSE": "/taoyun-museum-demo/static/js/2.0f77a580.chunk.js.LICENSE",
+    "static/media/1.png": "/taoyun-museum-demo/static/media/1.125deea4.png",
+    "static/media/2.png": "/taoyun-museum-demo/static/media/2.4f4f8c67.png",
+    "static/media/3.png": "/taoyun-museum-demo/static/media/3.8416d575.png",
+    "static/media/4.png": "/taoyun-museum-demo/static/media/4.30375f64.png",
+    "static/media/art.png": "/taoyun-museum-demo/static/media/art.deda7a52.png",
+    "static/media/calendar.png": "/taoyun-museum-demo/static/media/calendar.efea284d.png",
+    "static/media/exhibition.png": "/taoyun-museum-demo/static/media/exhibition.e44281bb.png",
+    "static/media/featured.png": "/taoyun-museum-demo/static/media/featured.9e526e9f.png",
+    "static/media/footer_01.png": "/taoyun-museum-demo/static/media/footer_01.57529e9e.png",
+    "static/media/footer_02.png": "/taoyun-museum-demo/static/media/footer_02.29e0d1f6.png",
+    "static/media/footer_03.png": "/taoyun-museum-demo/static/media/footer_03.9f6fc4f7.png",
+    "static/media/footer_04.png": "/taoyun-museum-demo/static/media/footer_04.c78afa38.png",
+    "static/media/index_01.png": "/taoyun-museum-demo/static/media/index_01.17f5960b.png",
+    "static/media/index_02.png": "/taoyun-museum-demo/static/media/index_02.0f7a325c.png",
+    "static/media/index_03.png": "/taoyun-museum-demo/static/media/index_03.7d48f604.png",
+    "static/media/index_04.png": "/taoyun-museum-demo/static/media/index_04.c0d0c085.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.adb9d453.js",
+    "static/js/2.0f77a580.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.3439e612.chunk.js"
+  ]
+}
