@@ -34,7 +34,8 @@
         l.pathname
           .split("/")
           .slice(0, 1 + segmentCount)
-          .join("/") /*'/?p=/' +*/ + '/'
+          .join("/") /*'/?p=/' +*/ +
+          "/" +
           l.pathname
             .slice(1)
             .split("/")
