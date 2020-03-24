@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/taoyun-museum/precache-manifest.4da126ebe9537fb073d325981b748b31.js"
+  "/taoyun-museum/precache-manifest.b3bc972ebe7763546151dbabba60993f.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "12ff3802c1b009afa136680d6d04e8b7",
+    "revision": "819d4b574d36c679a7fa218661357179",
     "url": "/taoyun-museum/index.html"
   },
   {
-    "revision": "eddde0fc3e0d747f0078",
+    "revision": "5074df057a88e8a46b06",
     "url": "/taoyun-museum/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/taoyun-museum/static/js/2.1e755462.chunk.js.LICENSE"
   },
   {
-    "revision": "eddde0fc3e0d747f0078",
-    "url": "/taoyun-museum/static/js/main.c4fd6713.chunk.js"
+    "revision": "5074df057a88e8a46b06",
+    "url": "/taoyun-museum/static/js/main.ac52bd89.chunk.js"
   },
   {
     "revision": "220af9f1501473c2494f",
