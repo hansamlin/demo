@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/taoyun-museum/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/taoyun-museum/static/js/main.24952d97.chunk.js",
-    "main.js.map": "/taoyun-museum/static/js/main.24952d97.chunk.js.map",
+    "main.js": "/taoyun-museum/static/js/main.9f634f2d.chunk.js",
+    "main.js.map": "/taoyun-museum/static/js/main.9f634f2d.chunk.js.map",
     "runtime-main.js": "/taoyun-museum/static/js/runtime-main.96ee7a87.js",
     "runtime-main.js.map": "/taoyun-museum/static/js/runtime-main.96ee7a87.js.map",
-    "static/js/2.c38bccf3.chunk.js": "/taoyun-museum/static/js/2.c38bccf3.chunk.js",
-    "static/js/2.c38bccf3.chunk.js.map": "/taoyun-museum/static/js/2.c38bccf3.chunk.js.map",
+    "static/js/2.0c18b43e.chunk.js": "/taoyun-museum/static/js/2.0c18b43e.chunk.js",
+    "static/js/2.0c18b43e.chunk.js.map": "/taoyun-museum/static/js/2.0c18b43e.chunk.js.map",
     "index.html": "/taoyun-museum/index.html",
-    "precache-manifest.126623a9d5abc8dbff564bdf16ad5487.js": "/taoyun-museum/precache-manifest.126623a9d5abc8dbff564bdf16ad5487.js",
+    "precache-manifest.1b5587de4ac9230aa88cfbdd0cd23c15.js": "/taoyun-museum/precache-manifest.1b5587de4ac9230aa88cfbdd0cd23c15.js",
     "service-worker.js": "/taoyun-museum/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/taoyun-museum/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.c38bccf3.chunk.js.LICENSE": "/taoyun-museum/static/js/2.c38bccf3.chunk.js.LICENSE",
+    "static/js/2.0c18b43e.chunk.js.LICENSE": "/taoyun-museum/static/js/2.0c18b43e.chunk.js.LICENSE",
     "static/media/1.png": "/taoyun-museum/static/media/1.125deea4.png",
     "static/media/2.png": "/taoyun-museum/static/media/2.4f4f8c67.png",
     "static/media/3.png": "/taoyun-museum/static/media/3.8416d575.png",
@@ -31,8 +31,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.96ee7a87.js",
-    "static/js/2.c38bccf3.chunk.js",
+    "static/js/2.0c18b43e.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.24952d97.chunk.js"
+    "static/js/main.9f634f2d.chunk.js"
   ]
 }
