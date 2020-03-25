@@ -12,6 +12,7 @@ import LogoWhite from "../logo_1.png";
 import LogoBlack from "../logo.png";
 import SearchPup from "../toolbar/SearchPup";
 import BlockStatic from "../block/BlockStatic";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: ${vHeight};
@@ -85,11 +86,13 @@ export default () => {
     return (
       <Container className="App">
         <Logo>
-          <img
-            style={{ display: "block" }}
-            src={show.close.opacity === 1 ? LogoBlack : LogoWhite}
-            alt="Logo"
-          />
+          <Link to="/">
+            <img
+              style={{ display: "block" }}
+              src={show.close.opacity === 1 ? LogoBlack : LogoWhite}
+              alt="Logo"
+            />
+          </Link>
         </Logo>
         <Toolbar />
         <SearchPup />

@@ -1,6 +1,7 @@
 import React from "react";
 import LogoBlack from "../logo.png";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Logo = styled.div`
   position: fixed;
@@ -15,7 +16,9 @@ const Logo = styled.div`
 export default ({ show }) => {
   return (
     <Logo theme={show}>
-      <img style={{ display: "block" }} src={LogoBlack} alt="Logo" />
+      <Link to="/">
+        <img style={{ display: "block" }} src={LogoBlack} alt="Logo" />
+      </Link>
     </Logo>
   );
 };
